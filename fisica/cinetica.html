@@ -1,1 +1,369 @@
-.
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grandezas Físicas</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1612;
+    --paper: #f5f0e8;
+    --rust: #8b3a1f;
+    --ash: #9a9080;
+    --rule: #c8bfaa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    line-height: 1.65;
+    padding: 4rem 2rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.2rem;
+    margin-bottom: 2.8rem;
+  }
+
+  header h1 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  header p {
+    font-size: 2rem;
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  /* GLOSSÁRIO */
+  section.glossary {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.2rem;
+  }
+
+  table.glos {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table.glos tr {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  table.glos tr:last-child {
+    border-bottom: 2px solid var(--ink);
+  }
+
+  table.glos th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-align: left;
+    padding: 0.4rem 0.8rem 0.4rem 0;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  table.glos td {
+    padding: 0.55rem 0.8rem 0.55rem 0;
+    vertical-align: top;
+  }
+
+  td.sym {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.05rem;
+    color: var(--rust);
+    width: 3.5rem;
+    font-style: normal;
+  }
+
+  td.nome {
+    font-style: italic;
+    width: 10rem;
+  }
+
+  td.dim {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ash);
+    width: 9rem;
+  }
+
+  td.def {
+    font-size: 0.92rem;
+    color: #3a3530;
+  }
+
+  /* RELAÇÕES */
+  section.relations {
+    margin-bottom: 3.5rem;
+  }
+
+  .eq-block {
+    margin-bottom: 2rem;
+    padding-left: 1.2rem;
+    border-left: 3px solid var(--rust);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadein 0.5s forwards;
+  }
+
+  .eq-block:nth-child(2) { animation-delay: 0.1s; }
+  .eq-block:nth-child(3) { animation-delay: 0.2s; }
+  .eq-block:nth-child(4) { animation-delay: 0.3s; }
+  .eq-block:nth-child(5) { animation-delay: 0.4s; }
+  .eq-block:nth-child(6) { animation-delay: 0.5s; }
+
+  @keyframes fadein {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .eq-formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .eq-formula .hi { color: var(--rust); }
+
+  .eq-name {
+    font-size: 0.85rem;
+    color: var(--ash);
+    font-style: italic;
+    margin-bottom: 0.15rem;
+  }
+
+  .eq-prose {
+    font-size: 0.9rem;
+    color: #4a4540;
+  }
+
+  /* PROPORÇÕES */
+  section.proportions table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  section.proportions th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash);
+    padding: 0.4rem 0.6rem;
+    border-bottom: 2px solid var(--ink);
+    text-align: left;
+  }
+
+  section.proportions td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  section.proportions td:first-child {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--rust);
+    width: 9rem;
+  }
+
+  .tag-dir { color: #4a7a4a; font-size: 0.78rem; }
+  .tag-inv { color: #7a4a4a; font-size: 0.78rem; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--ash);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mecânica Clássica</h1>
+  <p>Grandezas, símbolos &amp; relações</p>
+</header>
+
+<!-- GLOSSÁRIO -->
+<section class="glossary">
+  <p class="section-label">§ 1 — Glossário</p>
+  <table class="glos">
+    <thead>
+      <tr>
+        <th>símbolo</th>
+        <th>grandeza</th>
+        <th>dimensão / SI</th>
+        <th>definição operacional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="sym">t</td>
+        <td class="nome">tempo</td>
+        <td class="dim">T · s</td>
+        <td class="def">parâmetro ordenador dos eventos; o que os intervalos medem</td>
+      </tr>
+      <tr>
+        <td class="sym">Δt</td>
+        <td class="nome">intervalo de tempo</td>
+        <td class="dim">T · s</td>
+        <td class="def">diferença t₂ − t₁ entre dois instantes; duração de um processo</td>
+      </tr>
+      <tr>
+        <td class="sym">Δx</td>
+        <td class="nome">deslocamento</td>
+        <td class="dim">L · m</td>
+        <td class="def">variação de posição x₂ − x₁; grandeza vetorial</td>
+      </tr>
+      <tr>
+        <td class="sym">v</td>
+        <td class="nome">velocidade</td>
+        <td class="dim">L T⁻¹ · m/s</td>
+        <td class="def">taxa de variação do deslocamento em relação ao tempo</td>
+      </tr>
+      <tr>
+        <td class="sym">Δv</td>
+        <td class="nome">variação de velocidade</td>
+        <td class="dim">L T⁻¹ · m/s</td>
+        <td class="def">diferença v₂ − v₁; insumo direto da aceleração</td>
+      </tr>
+      <tr>
+        <td class="sym">a</td>
+        <td class="nome">aceleração</td>
+        <td class="dim">L T⁻² · m/s²</td>
+        <td class="def">taxa de variação da velocidade em relação ao tempo</td>
+      </tr>
+      <tr>
+        <td class="sym">m</td>
+        <td class="nome">massa</td>
+        <td class="dim">M · kg</td>
+        <td class="def">medida da inércia; resistência à mudança de estado de movimento</td>
+      </tr>
+      <tr>
+        <td class="sym">F</td>
+        <td class="nome">força</td>
+        <td class="dim">M L T⁻² · N</td>
+        <td class="def">agente que produz aceleração em uma massa; Newton = kg·m/s²</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- RELAÇÕES -->
+<section class="relations">
+  <p class="section-label">§ 2 — Relações fundamentais</p>
+
+  <div class="eq-block">
+    <div class="eq-name">velocidade média</div>
+    <div class="eq-formula"><span class="hi">v</span> = Δx / Δt</div>
+    <div class="eq-prose">O deslocamento dividido pelo intervalo que o produziu.</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-name">aceleração média</div>
+    <div class="eq-formula"><span class="hi">a</span> = Δv / Δt</div>
+    <div class="eq-prose">A variação de velocidade dividida pelo intervalo em que ocorreu.</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-name">segunda lei de Newton</div>
+    <div class="eq-formula"><span class="hi">F</span> = m · a</div>
+    <div class="eq-prose">Força é o produto entre massa e aceleração produzida. A aceleração é efeito; a força e a massa são causas concorrentes.</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-name">desdobramento — força via deslocamento</div>
+    <div class="eq-formula"><span class="hi">F</span> = m · (Δv / Δt)</div>
+    <div class="eq-prose">Substituindo <em>a</em>: força como variação de velocidade por unidade de tempo, ponderada pela massa.</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-name">deslocamento com aceleração constante</div>
+    <div class="eq-formula"><span class="hi">Δx</span> = v₀·Δt + ½·a·(Δt)²</div>
+    <div class="eq-prose">O espaço percorrido resulta do movimento inicial mais a contribuição quadrática da aceleração ao longo do intervalo.</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-name">relação sem tempo explícito</div>
+    <div class="eq-formula"><span class="hi">v²</span> = v₀² + 2·a·Δx</div>
+    <div class="eq-prose">Velocidade, aceleração e deslocamento relacionados sem que o intervalo apareça diretamente.</div>
+  </div>
+</section>
+
+<!-- PROPORÇÕES -->
+<section class="proportions">
+  <p class="section-label">§ 3 — Proporções &amp; dependências</p>
+  <table>
+    <thead>
+      <tr>
+        <th>relação</th>
+        <th>tipo</th>
+        <th>leitura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>F ∝ a</td>
+        <td><span class="tag-dir">direta</span></td>
+        <td>Dobrar a força, m fixo, dobra a aceleração.</td>
+      </tr>
+      <tr>
+        <td>a ∝ 1/m</td>
+        <td><span class="tag-inv">inversa</span></td>
+        <td>Dobrar a massa, F fixo, reduz a aceleração à metade.</td>
+      </tr>
+      <tr>
+        <td>v ∝ Δx</td>
+        <td><span class="tag-dir">direta</span></td>
+        <td>Maior deslocamento no mesmo intervalo implica maior velocidade.</td>
+      </tr>
+      <tr>
+        <td>v ∝ 1/Δt</td>
+        <td><span class="tag-inv">inversa</span></td>
+        <td>Mesmo deslocamento em intervalo maior implica menor velocidade.</td>
+      </tr>
+      <tr>
+        <td>a ∝ Δv</td>
+        <td><span class="tag-dir">direta</span></td>
+        <td>Maior variação de velocidade no mesmo intervalo implica maior aceleração.</td>
+      </tr>
+      <tr>
+        <td>Δx ∝ (Δt)²</td>
+        <td><span class="tag-dir">quadrática</span></td>
+        <td>Com aceleração constante, dobrar o intervalo quadruplica o deslocamento.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<br>
+<footer>Mecânica newtoniana · sistema internacional de unidades · notação escalar unidimensional</footer>
+
+</body>
+  </html>
+  
