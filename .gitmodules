@@ -1,0 +1,12 @@
+[submodule "symposium/sscad/2026/minicursos/starpu"]
+	path = symposium/sscad/2026/minicursos/starpu
+	url = https://github.com/schnorr/starpu-tutorial.git
+[submodule "symposium/sscad/2026/minicursos/cuda"]
+	path = symposium/sscad/2026/minicursos/cuda
+	url = https://github.com/arduinoufv/sscad26.git
+[submodule "symposium/sscad/2026/minicursos/tenstorrent"]
+	path = symposium/sscad/2026/minicursos/tenstorrent
+	url = https://github.com/CESAR-HPC/tt-sscad26.git
+[submodule "symposium/sscad/2026/minicursos/compressao_gpu"]
+	path = symposium/sscad/2026/minicursos/compressao_gpu
+	url = https://github.com/HPCSys-Lab/Minicurso_Compressao_SSCAD26.git
